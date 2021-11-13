@@ -13,18 +13,18 @@ import { Builder, By, until } from "selenium-webdriver";
     );
     await driver.switchTo().frame(iframe);
     const p = await driver.wait(until.elementLocated(By.xpath("//body//p")));
-    const pText = await p.getText();
 
-    console.log("Default text: ", pText);
+    console.log("Default text: ", await p.getText());
 
-    const changedText = await driver.executeScript(() => {
-      const body_ = document.getElementById("tinymce");
-      const p_ = body_.getElementsByTagName("p");
-      p_.innerText = "Hello";
-      return p_.innerText;
-    });
+    await p.clear();
+    await p.sendKeys("Hello!");
 
-    console.log("Changed Text: ", changedText);
+    console.log(
+      "Changed text: ",
+      await driver.findElement(By.xpath("//body//p")).getText()
+    );
+
+    await driver.sleep(5000);
 
     await driver.quit();
   } catch (error) {
