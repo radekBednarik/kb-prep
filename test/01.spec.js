@@ -17,10 +17,7 @@ describe("Example test suite", function () {
 
   this.beforeEach(async function () {
     onVisitButton = await driver.wait(
-      until.elementIsVisible(
-        await driver.findElement(By.css("div#content button")),
-        10000
-      )
+      until.elementLocated(By.css("div#content button"), 10000)
     );
   });
 
@@ -31,10 +28,7 @@ describe("Example test suite", function () {
   it("Element via click is visible", async function () {
     await onVisitButton.click();
     const newButton = await driver.wait(
-      until.elementIsEnabled(
-        await driver.findElement(By.css("div#elements button")),
-        10000
-      )
+      until.elementLocated(By.css("div#elements button"), 10000)
     );
     expect(await newButton.isDisplayed()).to.be.true;
   });
