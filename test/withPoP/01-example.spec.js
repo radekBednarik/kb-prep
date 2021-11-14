@@ -16,6 +16,7 @@ describe("Tests using PoP", function () {
       .forBrowser("chrome")
       .setChromeOptions(chromeOpts)
       .build();
+
     page = new Page(driver);
     await page.visit();
   });
