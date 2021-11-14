@@ -6,19 +6,16 @@ let driver;
 let onVisitButton;
 
 describe("Example test suite", function () {
-  this.beforeAll(async function () {
+  this.beforeEach(async function () {
     driver = await new Builder().forBrowser("chrome").build();
     await driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
-  });
-
-  this.afterAll(async function () {
-    await driver.quit();
-  });
-
-  this.beforeEach(async function () {
     onVisitButton = await driver.wait(
       until.elementLocated(By.css("div#content button"), 10000)
     );
+  });
+
+  this.afterEach(async function () {
+    await driver.quit();
   });
 
   it("Element on visit is visible", async function () {
