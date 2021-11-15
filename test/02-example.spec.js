@@ -15,6 +15,7 @@ describe("Tests using PoP", function () {
   });
 
   it("modal not visible after reload", async function () {
+    await page.getVisibleModal();
     await page.closeModal();
     await page.reload();
     expect(await page.isElementVisible(await page.modalTitle)).to.be.false;

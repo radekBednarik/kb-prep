@@ -6,9 +6,17 @@ class EntryAddPage extends BasePage {
     super(driver);
     this.url = "https://the-internet.herokuapp.com/entry_ad";
     this.selectors = {
+      modal: "div#modal",
       modalTitle: "div#modal h3",
       modalClose: '//div[contains(@class, "modal-footer")]',
     };
+  }
+
+  get modal() {
+    return this.driver.wait(
+      until.elementLocated(By.css(this.selectors.modal)),
+      5000
+    );
   }
 
   get modalTitle() {
@@ -37,11 +45,10 @@ class EntryAddPage extends BasePage {
 
   async closeModal() {
     await this.driver.executeScript(() => {
-      const underlay = document.querySelector("#modal div");
-      underlay.remove();
+      document.querySelector("#modal div").remove();
     });
+    this.waitForCssStyleChange(await this.modal, "display");
     await this.modalClose.click();
-    await this.driver.sleep(2000);
   }
 }
 
