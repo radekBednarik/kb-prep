@@ -1,8 +1,9 @@
 const { until, By } = require("selenium-webdriver");
+const { BasePage } = require("./basePage");
 
-class Page {
+class ElementsPage extends BasePage {
   constructor(driver) {
-    this.driver = driver;
+    super(driver);
     this.url = "https://the-internet.herokuapp.com/add_remove_elements/";
     this.selectors = {
       buttonOnVisit: "div#content button",
@@ -29,10 +30,6 @@ class Page {
   async clickButtonOnVisit() {
     await this.buttonOnVisit.click();
   }
-
-  async isElementVisible(element) {
-    return await element.isDisplayed();
-  }
 }
 
-module.exports = { Page };
+module.exports = { ElementsPage };

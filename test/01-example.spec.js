@@ -1,11 +1,11 @@
 const { expect } = require("chai");
-const { Page } = require("./pageObjects/page");
+const { ElementsPage } = require("./pageObjects/ElementsPage");
 
 let page;
 
 describe("Tests using PoP", function () {
   this.beforeEach(async function () {
-    page = new Page(this.driver);
+    page = new ElementsPage(this.driver);
     await page.visit();
   });
 
