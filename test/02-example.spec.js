@@ -10,7 +10,8 @@ describe("Tests using PoP", function () {
   });
 
   it("modal title is visible", async function () {
-    expect(await page.isElementVisible(await page.modalTitle)).to.be.true;
+    expect(await page.isElementVisible(await page.getVisibleModal())).to.be
+      .true;
   });
 
   it("modal not visible after reload", async function () {

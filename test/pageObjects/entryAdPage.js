@@ -13,9 +13,7 @@ class EntryAddPage extends BasePage {
 
   get modalTitle() {
     return this.driver.wait(
-      until.elementIsVisible(
-        this.driver.findElement(By.css(this.selectors.modalTitle))
-      ),
+      until.elementLocated(By.css(this.selectors.modalTitle)),
       5000
     );
   }
@@ -29,6 +27,10 @@ class EntryAddPage extends BasePage {
     );
   }
 
+  async getVisibleModal() {
+    return await this.driver.wait(until.elementIsVisible(this.modalTitle));
+  }
+
   async visit() {
     await this.driver.get(this.url);
   }
@@ -39,6 +41,7 @@ class EntryAddPage extends BasePage {
       underlay.remove();
     });
     await this.modalClose.click();
+    await this.driver.sleep(2000);
   }
 }
 

@@ -2,6 +2,7 @@ class BasePage {
   constructor(driver) {
     this.driver = driver;
     this.navigation = this.driver.navigate();
+    this.options = this.driver.manage();
   }
 
   async isElementVisible(element) {
