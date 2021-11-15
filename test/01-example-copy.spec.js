@@ -1,5 +1,5 @@
-import { expect } from "chai";
-import { Page } from "./pageObjects/page.mjs";
+const { expect } = require("chai");
+const { Page } = require("./pageObjects/page");
 
 let page;
 

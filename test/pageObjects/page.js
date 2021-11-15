@@ -1,6 +1,6 @@
-import { until, By } from "selenium-webdriver";
+const { until, By } = require("selenium-webdriver");
 
-export class Page {
+class Page {
   constructor(driver) {
     this.driver = driver;
     this.url = "https://the-internet.herokuapp.com/add_remove_elements/";
@@ -34,3 +34,5 @@ export class Page {
     return await element.isDisplayed();
   }
 }
+
+module.exports = { Page };

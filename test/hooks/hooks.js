@@ -1,10 +1,10 @@
-import { Builder } from "selenium-webdriver";
-import { Options } from "selenium-webdriver/chrome.js";
+const { Builder } = require("selenium-webdriver");
+const { Options } = require("selenium-webdriver/chrome");
 
 const chromeOpts = new Options();
 chromeOpts.windowSize({ width: 1920, height: 1080 });
 
-export const mochaHooks = () => {
+module.exports.mochaHooks = () => {
   return {
     beforeEach: [
       async function () {
