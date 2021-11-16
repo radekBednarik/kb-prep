@@ -3,18 +3,18 @@ const { EntryAddPage } = require("./pageObjects/entryAdPage");
 
 let page;
 
-describe("Tests using PoP", function () {
+describe("Entry Ad page tests", function () {
   this.beforeEach(async function () {
     page = new EntryAddPage(this.driver);
     await page.visit();
   });
 
-  it("modal title is visible", async function () {
+  it("modal is visible", async function () {
     expect(await page.isElementVisible(await page.getVisibleModal())).to.be
       .true;
   });
 
-  it("modal not visible after reload", async function () {
+  it("closed modal not visible after reload", async function () {
     await page.getVisibleModal();
     await page.closeModal();
     await page.reload();

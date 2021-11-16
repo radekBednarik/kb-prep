@@ -3,7 +3,7 @@ const { ElementsPage } = require("./pageObjects/ElementsPage");
 
 let page;
 
-describe("Tests using PoP", function () {
+describe("Elements page tests", function () {
   this.beforeEach(async function () {
     page = new ElementsPage(this.driver);
     await page.visit();

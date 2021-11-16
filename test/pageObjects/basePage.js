@@ -13,17 +13,24 @@ class BasePage {
     await this.navigation.refresh();
   }
 
-  async waitForCssStyleChange(element, styleName, timeout = 5000) {
+  async waitForCssStyleChange(
+    element,
+    styleName,
+    timeout = 5000,
+    pollInterval = 1000
+  ) {
     let counter = 0;
     const oldValue = await element.getCssValue(styleName);
 
     while (counter <= timeout) {
-      counter += 1000;
+      counter += pollInterval;
       const newValue = await element.getCssValue(styleName);
 
       if (oldValue !== newValue) {
         return;
       }
+
+      await this.driver.sleep(pollInterval);
     }
 
     throw Error(`CSS property ${styleName} value did not change.`);
