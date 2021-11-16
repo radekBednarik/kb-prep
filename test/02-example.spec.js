@@ -18,6 +18,6 @@ describe("Entry Ad page tests", function () {
     await page.getVisibleModal();
     await page.closeModal();
     await page.reload();
-    expect(await page.isElementVisible(await page.modalTitle)).to.be.false;
+    expect(await (await page.getNotVisibleModal()).isDisplayed()).to.be.false;
   });
 });

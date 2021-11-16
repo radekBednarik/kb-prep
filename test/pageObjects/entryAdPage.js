@@ -36,7 +36,17 @@ class EntryAddPage extends BasePage {
   }
 
   async getVisibleModal() {
-    return await this.driver.wait(until.elementIsVisible(this.modalTitle));
+    return await this.driver.wait(
+      until.elementIsVisible(this.modalTitle),
+      2000
+    );
+  }
+
+  async getNotVisibleModal() {
+    return await this.driver.wait(
+      until.elementIsNotVisible(this.modalTitle),
+      2000
+    );
   }
 
   async visit() {
