@@ -5,4 +5,5 @@ module.exports = {
   timeout: 60000,
   parallel: true,
   jobs: cpus().length / 2,
+  slow: 10000,
 };
