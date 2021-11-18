@@ -1,6 +1,7 @@
 const { expect } = require("chai");
 const { EntryAddPage } = require("./pageObjects/entryAdPage");
 
+/** @type {EntryAddPage} */
 let page;
 
 describe("Entry Ad page tests", function () {

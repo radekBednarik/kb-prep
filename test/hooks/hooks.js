@@ -1,3 +1,11 @@
+/**
+ * Mocha root hooks.
+ * All repeated code in the hooks in the tests can be placed here.
+ * To make variables accessible within Mocha context - create them as
+ * this.property OR create them as global. First option is preferred.
+ * @module test/hooks
+ */
+
 const { Builder } = require("selenium-webdriver");
 const { Options } = require("selenium-webdriver/chrome");
 

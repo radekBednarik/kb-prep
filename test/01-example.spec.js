@@ -1,6 +1,7 @@
 const { expect } = require("chai");
 const { ElementsPage } = require("./pageObjects/ElementsPage");
 
+/** @type {ElementsPage} */
 let page;
 
 describe("Elements page tests", function () {
