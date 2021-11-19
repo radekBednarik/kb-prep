@@ -14,6 +14,7 @@ class BasePage {
    * @param {import("selenium-webdriver").ThenableWebDriver} driver selenium driver instance
    */
   constructor(driver) {
+    /** @type {import("selenium-webdriver").ThenableWebDriver} */
     this.driver = driver;
     /** @type {import("selenium-webdriver").Navigation} */
     this.navigation = this.driver.navigate();
