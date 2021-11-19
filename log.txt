@@ -1,7 +1,0 @@
-npm init -y
-npm i selenium-webdriver chromedriver mocha chai
-npm i eslint @types/selenium-webdriver @types/mocha @types/chai
-
-node_modules/.bin/eslint --init
-
-node_modules/.bin/mocha test/** --timeout 60000
