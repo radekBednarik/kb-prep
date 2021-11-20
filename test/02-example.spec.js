@@ -11,14 +11,14 @@ describe("Entry Ad page tests", function () {
   });
 
   it("modal is visible", async function () {
-    expect(await page.isElementVisible(await page.getVisibleModal())).to.be
+    expect(await page.isElementVisible(await page.visibleModalTitle)).to.be
       .true;
   });
 
   it("closed modal not visible after reload", async function () {
-    await page.getVisibleModal();
+    await page.visibleModalTitle;
     await page.closeModal();
     await page.reload();
-    expect(await (await page.getNotVisibleModal()).isDisplayed()).to.be.false;
+    expect(await (await page.notVisibleModalTitle).isDisplayed()).to.be.false;
   });
 });

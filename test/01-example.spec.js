@@ -11,11 +11,12 @@ describe("Elements page tests", function () {
   });
 
   it("on visit button is visible", async function () {
-    expect(await page.isElementVisible(await page.buttonOnVisit)).to.be.true;
+    expect(await page.isElementVisible(await page.locatedBttnOnVisit)).to.be
+      .true;
   });
 
   it("after click button is visible", async function () {
-    await page.clickButtonOnVisit();
-    expect(await page.isElementVisible(await page.buttonAfterClick)).to.be.true;
+    await page.clickLocatedBttnOnVisit();
+    expect(await page.isElementVisible(await page.locatedBttnNew)).to.be.true;
   });
 });

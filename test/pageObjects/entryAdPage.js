@@ -36,7 +36,7 @@ class EntryAddPage extends BasePage {
    * @property
    * @returns {import("selenium-webdriver").WebElementPromise}
    */
-  get modal() {
+  get locatedModal() {
     return this.driver.wait(
       until.elementLocated(By.css(this.selectors.modal)),
       5000
@@ -47,7 +47,7 @@ class EntryAddPage extends BasePage {
    * @property
    * @returns {import("selenium-webdriver").WebElementPromise}
    */
-  get modalTitle() {
+  get locatedModalTitle() {
     return this.driver.wait(
       until.elementLocated(By.css(this.selectors.modalTitle)),
       5000
@@ -59,7 +59,7 @@ class EntryAddPage extends BasePage {
    * @property
    * @returns {import("selenium-webdriver").WebElementPromise}
    */
-  get modalClose() {
+  get visibleModalClose() {
     return this.driver.wait(
       until.elementIsVisible(
         this.driver.findElement(By.xpath(this.selectors.modalClose))
@@ -67,27 +67,26 @@ class EntryAddPage extends BasePage {
       5000
     );
   }
-
   /**
-   * Returns promise of the visible modal title WebElement.
-   * @async
+   * Returns promise of the visible modal title element.
+   * @property
    * @returns {import("selenium-webdriver").WebElementPromise}
    */
-  async getVisibleModal() {
-    return await this.driver.wait(
-      until.elementIsVisible(this.modalTitle),
-      2000
+  get visibleModalTitle() {
+    return this.driver.wait(
+      until.elementIsVisible(this.locatedModalTitle),
+      5000
     );
   }
   /**
-   * Returns promise of the not-visible modal title webelement.
-   * @async
+   * Returns promise of the modal title element that is not visible.
+   * @property
    * @returns {import("selenium-webdriver").WebElementPromise}
    */
-  async getNotVisibleModal() {
-    return await this.driver.wait(
-      until.elementIsNotVisible(this.modalTitle),
-      2000
+  get notVisibleModalTitle() {
+    return this.driver.wait(
+      until.elementIsNotVisible(this.locatedModalTitle),
+      5000
     );
   }
 
@@ -97,7 +96,7 @@ class EntryAddPage extends BasePage {
    * @returns {Promise<void>}
    */
   async visit() {
-    await this.driver.get(this.url);
+    await super.visit(this.url);
   }
 
   /**
@@ -110,8 +109,8 @@ class EntryAddPage extends BasePage {
     await this.driver.executeScript(() => {
       document.querySelector("#modal div").remove();
     });
-    this.waitForCssStyleChange(await this.modal, "display");
-    await this.modalClose.click();
+    this.waitForCssStyleChange(await this.locatedModal, "display");
+    await this.visibleModalClose.click();
   }
 }
 

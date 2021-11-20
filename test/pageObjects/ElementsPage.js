@@ -16,16 +16,16 @@ class ElementsPage extends BasePage {
    * Creates instance of the ElementsPage class.
    * @param {import("selenium-webdriver").ThenableWebDriver} driver
    * @property {object} selectors
-   * @property {string} selectors.buttonOnVisit
-   * @property {string} selectors.buttonAfterClick
+   * @property {string} selectors.locatedBttnOnVisit
+   * @property {string} selectors.locatedBttnNew
    */
   constructor(driver) {
     super(driver);
     /** @type {string} */
     this.url = "https://the-internet.herokuapp.com/add_remove_elements/";
     this.selectors = {
-      buttonOnVisit: "div#content button",
-      buttonAfterClick: "div#elements button",
+      locatedBttnOnVisit: "div#content button",
+      locatedBttnNew: "div#elements button",
     };
   }
 
@@ -35,9 +35,9 @@ class ElementsPage extends BasePage {
    * @returns {import("selenium-webdriver").WebElementPromise}
    *
    */
-  get buttonOnVisit() {
+  get locatedBttnOnVisit() {
     return this.driver.wait(
-      until.elementLocated(By.css(this.selectors.buttonOnVisit))
+      until.elementLocated(By.css(this.selectors.locatedBttnOnVisit))
     );
   }
 
@@ -46,9 +46,9 @@ class ElementsPage extends BasePage {
    * @property
    * @returns {import("selenium-webdriver").WebElementPromise}
    */
-  get buttonAfterClick() {
+  get locatedBttnNew() {
     return this.driver.wait(
-      until.elementLocated(By.css(this.selectors.buttonAfterClick))
+      until.elementLocated(By.css(this.selectors.locatedBttnNew))
     );
   }
 
@@ -58,7 +58,7 @@ class ElementsPage extends BasePage {
    * @returns {Promise<void>}
    */
   async visit() {
-    await this.driver.get(this.url);
+    await super.visit(this.url);
   }
 
   /**
@@ -66,8 +66,8 @@ class ElementsPage extends BasePage {
    * @async
    * @returns {Promise<void>}
    */
-  async clickButtonOnVisit() {
-    await this.buttonOnVisit.click();
+  async clickLocatedBttnOnVisit() {
+    await this.locatedBttnOnVisit.click();
   }
 }
 

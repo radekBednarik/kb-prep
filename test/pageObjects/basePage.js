@@ -40,6 +40,15 @@ class BasePage {
   async reload() {
     await this.navigation.refresh();
   }
+  /**
+   * Navigates to the given `url`.
+   * @async
+   * @param {string} url
+   * @returns {Promise<void>}
+   */
+  async visit(url) {
+    await this.driver.get(url);
+  }
 
   /**
    * Waits until CSS <style> property value changes.
