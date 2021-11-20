@@ -54,8 +54,8 @@ class BasePage {
    * Waits until CSS <style> property value changes.
    * @param {import("selenium-webdriver").WebElement} element
    * @param {string} styleName
-   * @param {number} timeout
-   * @param {number} pollInterval
+   * @param {number} [timeout=5000]
+   * @param {number} [pollInterval=1000]
    * @returns {Promise<void>}
    */
   async waitForCssStyleChange(
