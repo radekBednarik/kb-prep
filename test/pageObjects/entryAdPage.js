@@ -109,8 +109,10 @@ class EntryAddPage extends BasePage {
     await this.driver.executeScript(() => {
       document.querySelector("#modal div").remove();
     });
-    this.waitForCssStyleChange(await this.locatedModal, "display");
-    await this.visibleModalClose.click();
+    await Promise.all([
+      this.waitForCssStyleChange(await this.locatedModal, "display"),
+      this.visibleModalClose.click(),
+    ]);
   }
 }
 
