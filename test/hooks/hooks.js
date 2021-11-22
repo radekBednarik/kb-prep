@@ -10,7 +10,9 @@ const { Builder } = require("selenium-webdriver");
 const { Options } = require("selenium-webdriver/chrome");
 
 const chromeOpts = new Options();
-chromeOpts.windowSize({ width: 1920, height: 1080 });
+chromeOpts
+  .windowSize({ width: 1920, height: 1080 })
+  .excludeSwitches("enable-logging");
 
 module.exports.mochaHooks = () => {
   return {
